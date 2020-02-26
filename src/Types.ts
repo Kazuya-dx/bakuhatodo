@@ -3,4 +3,5 @@ export type Task = {
     title: string
     done: boolean
     limit: number
+    limitDate: Date
 }

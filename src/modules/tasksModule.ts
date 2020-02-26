@@ -7,7 +7,7 @@ type State = {
 }
 
 const initialState: State = {
-    count: 2,
+    count: 0,
     tasks: []
 }
 
@@ -24,12 +24,16 @@ const tasksModule = createSlice({
 
             // １日後のミリ秒を記述 ( + 86400000 に設定することで１日後に爆発)
             let limit = Date.now() + 10000;
+            // 爆発する日時を入力(Date型)
+            let limitDate = new Date();
+            limitDate.setDate(limitDate.getDate() + 1);
 
             const newTask: Task = {
                 id: state.count,
                 title: action.payload,
                 done: false,
                 limit: limit,
+                limitDate: limitDate,
             }
 
             state.tasks = [newTask, ...state.tasks]
@@ -37,7 +41,18 @@ const tasksModule = createSlice({
         doneTask(state: State, action: PayloadAction<Task>) {
             const task = state.tasks.find(t => t.id === action.payload.id)
             if (task) {
-                task.done = !task.done
+                let tmp: Date = task.limitDate;
+                if (!task.done) {
+                    task.done = !task.done;
+                    tmp.setDate(tmp.getDate() + 1);
+                    task.limitDate = tmp;
+                    task.limit += 10000;
+                } else {
+                    task.done = !task.done;
+                    tmp.setDate(tmp.getDate() - 1);
+                    task.limitDate = tmp;
+                    task.limit -= 10000;
+                }
             }
         },
         deleteTask(state: State, action: PayloadAction<Task>) {

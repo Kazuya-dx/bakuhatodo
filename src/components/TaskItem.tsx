@@ -3,7 +3,7 @@ import { Task } from '../Types'
 
 // Redux関連のモジュール・ファイル
 import { useDispatch } from 'react-redux'
-import { doneTask, deleteTask, explodeTask } from '../modules/tasksModule'
+import { doneTask, deleteTask } from '../modules/tasksModule'
 
 type Props = {
     task: Task
@@ -23,17 +23,9 @@ const TaskItem: React.FC<Props> = ({ task }) => {
                     defaultChecked={task.done}
                 />
                 <span>{task.title}</span>
-                <p>爆発する日時: {task.limit}</p>
+                <p>爆発する日時: {task.limitDate.toLocaleString()}</p>
             </label>
             <button onClick={() => dispatch(deleteTask(task))}>削除</button>
-            <button onClick={() => {
-                if (task.limit > Date.now()) {
-                    alert('まだ爆発しません');
-                } else {
-                    alert('さようなら、' + task.title);
-                    dispatch(explodeTask(task));
-                }
-            }}>爆発</button>
             <p> </p>
         </li>
     )
