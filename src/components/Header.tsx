@@ -1,9 +1,10 @@
 import React from 'react';
+import './Header.scss';
 
 const Header: React.FC = () => {
     return (
         <header>
-            <h1>React+Redux+TypeScript</h1>
+            <h1>サボったら爆発するTodoアプリ</h1>
         </header>
     )
 }

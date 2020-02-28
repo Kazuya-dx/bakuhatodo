@@ -2,14 +2,16 @@ import React from 'react';
 import TaskList from './components/TaskList';
 import TaskInput from './components/TaskInput';
 import Header from './components/Header';
-import './App.css';
+import './App.scss';
 
 const App: React.FC = () => {
     return (
-        <div>
+        <div className="wrapper">
             <Header />
             <TaskInput />
-            <TaskList />
+            <div className="container">
+                <TaskList />
+            </div>
         </div>
     )
 }

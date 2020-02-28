@@ -26,7 +26,6 @@ const TaskItem: React.FC<Props> = ({ task }) => {
                 <p>爆発する日時: {task.limitDate.toLocaleString()}</p>
             </label>
             <button onClick={() => dispatch(deleteTask(task))}>削除</button>
-            <p> </p>
         </li>
     )
 }

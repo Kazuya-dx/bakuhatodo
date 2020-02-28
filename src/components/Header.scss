@@ -1,0 +1,22 @@
+@media screen and (max-width: 1024px) { }
+@media screen and (max-width: 896px) { }
+/* スマホ用 */
+@media screen and (max-width: 480px) { 
+    header {
+        position: relative;
+        margin: 0;
+        height: 200px;
+        width: 100%;
+        background-image: url("../statics/header.jpg");
+        background-size: auto 320px;
+        color: white;
+
+        h1 {
+            position: absolute;
+            margin-left: 0.5em;
+            bottom: 10px;
+            width: 100%;
+            font-size: 20px;
+        }
+    }
+}

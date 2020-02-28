@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './TaskInput.scss';
 
 // Redux関連のモジュール・ファイル
 import { useDispatch } from 'react-redux';
@@ -25,7 +26,7 @@ const TaskInput: React.FC = () => {
 
     return (
         <div>
-            <div className="inner">
+            <div className="input-wrapper">
                 <input
                     type="text"
                     value={inputTitle}

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import TaskItem from '../components/TaskItem';
+import './TaskList.scss';
 
 // Redux関連のライブラリ・ファイル
 import { useSelector, useDispatch } from 'react-redux';
