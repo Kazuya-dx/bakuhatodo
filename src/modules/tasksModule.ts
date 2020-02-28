@@ -46,12 +46,12 @@ const tasksModule = createSlice({
                     task.done = !task.done;
                     tmp.setDate(tmp.getDate() + 1);
                     task.limitDate = tmp;
-                    task.limit += 10000;
+                    task.limit += 86400000;
                 } else {
                     task.done = !task.done;
                     tmp.setDate(tmp.getDate() - 1);
                     task.limitDate = tmp;
-                    task.limit -= 10000;
+                    task.limit -= 86400000;
                 }
             }
         },

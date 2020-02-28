@@ -26,7 +26,7 @@ const TaskList: React.FC = () => {
     return (
         <div>
             {
-                tasks.length <= 0 ? '登録されたTODOはありません。' :
+                tasks.length <= 0 ? <div className="no-task">No Tasks</div> :
                     <ul>
                         {tasks.map(task => (
                             <TaskItem key={task.id} task={task} />
