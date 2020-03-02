@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Task } from '../Types'
 
 // Redux関連のモジュール・ファイル
@@ -9,9 +9,25 @@ type Props = {
     task: Task
 }
 
+// カウントダウンを行うカスタムフック
+function useCountDown(initialValue: number) {
+    const [count, setCount] = useState(initialValue);
+
+    useEffect(() => {
+        const timerId = setTimeout(() => {
+            setCount(count => count - 1);
+        }, 1000);
+        return () => clearTimeout(timerId);
+    }, [count]);
+
+    return count;
+}
+
 const TaskItem: React.FC<Props> = ({ task }) => {
     // Actionを使用するために dispatch を定義
     const dispatch = useDispatch()
+
+    const count: number = useCountDown(10);
 
     return (
         <li className={task.done ? 'done' : ''}>
@@ -23,7 +39,7 @@ const TaskItem: React.FC<Props> = ({ task }) => {
                     defaultChecked={task.done}
                 />
                 <span>{task.title}</span>
-                <p>爆発する日時: {task.limitDate.toLocaleString()}</p>
+                <p>爆発まで 残り {count} 秒</p>
             </label>
             <button onClick={() => dispatch(deleteTask(task))}>削除</button>
         </li>
