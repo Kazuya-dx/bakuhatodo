@@ -22,18 +22,10 @@ const tasksModule = createSlice({
         addTask(state: State, action: PayloadAction<string>) {
             state.count++
 
-            // １日後のミリ秒を記述 ( + 86400000 に設定することで１日後に爆発)
-            let limit = Date.now() + 10000;
-            // 爆発する日時を入力(Date型)
-            let limitDate = new Date();
-            limitDate.setDate(limitDate.getDate() + 1);
-
             const newTask: Task = {
                 id: state.count,
                 title: action.payload,
                 done: false,
-                limit: limit,
-                limitDate: limitDate,
             }
 
             state.tasks = [newTask, ...state.tasks]
@@ -41,9 +33,8 @@ const tasksModule = createSlice({
         doneTask(state: State, action: PayloadAction<Task>) {
             const task = state.tasks.find(t => t.id === action.payload.id)
             if (task) {
-                if (!task.done) {
-                    task.done = !task.done;
-                }
+                task.done = !task.done;
+                console.log(task.done);
             }
         },
         deleteTask(state: State, action: PayloadAction<Task>) {
@@ -51,11 +42,6 @@ const tasksModule = createSlice({
                 t.id !== action.payload.id
             )
         },
-        explodeTask(state: State, action: PayloadAction<Task>) {
-            state.tasks = state.tasks.filter(t =>
-                t.limit > Date.now()
-            )
-        }
     }
 })
 
@@ -64,7 +50,7 @@ const tasksModule = createSlice({
 アクションを使用する時は addTask(), doneTask(), deleteTask() で使用可能。
 */
 export const {
-    addTask, doneTask, deleteTask, explodeTask,
+    addTask, doneTask, deleteTask,
 } = tasksModule.actions
 
 export default tasksModule

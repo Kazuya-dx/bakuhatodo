@@ -4,7 +4,7 @@ import './TaskItem.scss'
 
 // Redux関連のモジュール・ファイル
 import { useDispatch } from 'react-redux'
-import { doneTask, deleteTask, explodeTask } from '../modules/tasksModule'
+import { doneTask, deleteTask } from '../modules/tasksModule'
 
 type Props = {
     task: Task
@@ -17,7 +17,7 @@ function useCountDown(initialValue: number, task: Task): number {
     const checkRef = useRef(false);
 
     useEffect(() => {
-        if (count > -1) {
+        if (count > -1 && !checkRef.current) {
             const timerId = setTimeout(() => {
                 setCount(count => count - 1);
             }, 1000);
@@ -25,13 +25,24 @@ function useCountDown(initialValue: number, task: Task): number {
         }
     }, [count]);
 
+    // チェック時の処理
+    if (task.done && !checkRef.current) {
+        checkRef.current = !checkRef.current;
+        console.log(checkRef.current);
+    }
+    // チェック外した時の処理
+    else if (!task.done && checkRef.current) {
+        checkRef.current = !checkRef.current;
+        console.log(checkRef.current);
+        setTimeout(() => {
+            setCount(count => count - 1);
+        }, 1000);
+    }
+
+    // 制限時間に達した時の処理
     if (count === -1) {
         alert('さようなら、' + task.title);
-        dispatch(explodeTask(task));
-    }
-    if (task.done && !checkRef.current) {
-        setCount(-2);
-        checkRef.current = true;
+        dispatch(deleteTask(task));
     }
 
     return count;
