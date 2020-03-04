@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Task } from '../Types'
+import './TaskItem.scss'
 
 // Redux関連のモジュール・ファイル
 import { useDispatch } from 'react-redux'
@@ -13,6 +14,7 @@ type Props = {
 function useCountDown(initialValue: number, task: Task): number {
     const dispatch = useDispatch();
     const [count, setCount] = useState(initialValue);
+    const checkRef = useRef(false);
 
     useEffect(() => {
         if (count > -1) {
@@ -27,23 +29,12 @@ function useCountDown(initialValue: number, task: Task): number {
         alert('さようなら、' + task.title);
         dispatch(explodeTask(task));
     }
+    if (task.done && !checkRef.current) {
+        setCount(-2);
+        checkRef.current = true;
+    }
 
     return count;
-}
-
-// useRefのテストとしてのカスタムフック
-function useRefTest() {
-    // ref
-    const countRef: React.MutableRefObject<number> = useRef(0);
-
-    // 普通の変数
-    let count: number = 0;
-
-    console.log('ref:' + countRef.current);
-    console.log('count:' + count);
-
-    countRef.current++;
-    count++;
 }
 
 const TaskItem: React.FC<Props> = ({ task }) => {
@@ -51,8 +42,6 @@ const TaskItem: React.FC<Props> = ({ task }) => {
     const dispatch = useDispatch()
 
     const count: number = useCountDown(10, task);
-
-    useRefTest();
 
     return (
         <li className={task.done ? 'done' : ''}>
@@ -64,7 +53,7 @@ const TaskItem: React.FC<Props> = ({ task }) => {
                     defaultChecked={task.done}
                 />
                 <span>{task.title}</span>
-                <p>爆発まで 残り {count} 秒</p>
+                {!task.done ? <p>爆発まで 残り {count} 秒</p> : <p>タスク完了</p>}
             </label>
             <button onClick={() => dispatch(deleteTask(task))}>削除</button>
         </li>

@@ -41,17 +41,8 @@ const tasksModule = createSlice({
         doneTask(state: State, action: PayloadAction<Task>) {
             const task = state.tasks.find(t => t.id === action.payload.id)
             if (task) {
-                let tmp: Date = task.limitDate;
                 if (!task.done) {
                     task.done = !task.done;
-                    tmp.setDate(tmp.getDate() + 1);
-                    task.limitDate = tmp;
-                    task.limit += 86400000;
-                } else {
-                    task.done = !task.done;
-                    tmp.setDate(tmp.getDate() - 1);
-                    task.limitDate = tmp;
-                    task.limit -= 86400000;
                 }
             }
         },
