@@ -1,0 +1,31 @@
+.fade-enter {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+.fade-enter-active {
+    transition: opacity 800ms ease-out, transform 800ms ease-out;
+    opacity: 0.8;
+    transform: translateY(0px);
+}
+.fade-appear {
+    opacity: 0;
+}
+.fade-appear-active {
+    transition: opacity 800ms ease-out;
+    opacity: 1;
+}
+.fade-exit {
+    transition: opacity 800ms ease-in;
+    opacity: 1;
+}
+.fade-exit-active {
+    opacity: 0;
+}
+
+.wrap-enter {
+    opacity: 0.5;
+}
+.wrap-enter-active {
+    transition: opacity 800ms ease-out;
+    opacity: 1;
+}
