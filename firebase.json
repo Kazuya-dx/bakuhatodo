@@ -8,8 +8,8 @@
     ],
     "rewrites": [
       {
-        "source": "/login",
-        "destination": "/login.html"
+        "source": "/*",
+        "destination": "/index.html"
       }
     ],
     "storage": {

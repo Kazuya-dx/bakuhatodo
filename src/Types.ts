@@ -3,3 +3,10 @@ export type Task = {
     title: string
     done: boolean
 }
+
+export type User = {
+    name: "",
+    address: "",
+    password: "",
+    isLoggedIn: false
+}

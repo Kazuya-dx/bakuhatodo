@@ -1,0 +1,177 @@
+.login-top {
+    position: relative;
+    height: 100vh;
+    font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+    background-image: url('../statics/background.jpg');
+    background-size: cover;
+
+    .cover {
+        position: absolute;
+        height: 100vh;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 1);
+        z-index: 1;
+    }
+
+    h1 {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 1.5em;
+        right: 0;
+        margin: auto;
+        height: 50px;
+        font-size: 45px;
+        color: rgba(255, 255, 255, 0.85);
+        z-index: 2;
+    }
+    
+    h2 {
+        position: absolute;
+        top: 15%;
+        bottom: 0;
+        left: 2.76em;
+        right: 0;
+        margin: auto;
+        height: 30px;
+        font-size: 25px;
+        color: rgba(255, 255, 255, 0.85);
+        z-index: 2;
+    }
+
+    .button-area {
+        position: absolute;
+        bottom: 25%;
+        left: 0;
+        right: 0;
+        margin: auto;
+        height: 30px;
+        width: 100%;
+        text-align: center;
+
+        button {
+            margin: 10px;
+            width: 200px;
+            height: 50px;
+            background-color: #222;
+            color: #ddd;
+            border: 0;
+        }
+        button:hover {
+            background-color: #333;
+            cursor: pointer;
+        }
+
+        p {
+            margin: 0;
+            width: 100%;
+            height: 30px;
+
+            button {
+                width: 420px;
+                height: 35px;
+                background-color: #555;
+            }
+            button:hover {
+                background-color: #666;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.login-text {
+    height: 100vh;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+
+    h1 {
+        margin: 0;
+        padding: 50px 0;
+        font-size: 30px;
+        width: 100%;
+        text-align: center;
+    }
+    .img-area {
+        text-align: center;
+        padding-bottom: 30px;
+
+        img {
+            width: 60%;
+        }
+    }
+    p {
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
+
+.login-footer {
+    height: 40vh;
+    background-color: #181818;
+}
+
+@media screen and (max-width: 480px) {
+    .login-top {   
+        height: 85vh;  
+        h1 {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            height: 50px;
+            width: 300px;
+            font-size: 30px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .cover {
+            height: 85vh;
+        }
+        
+        h2 {
+            position: absolute;
+            top: 8%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            height: 30px;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .button-area {
+            bottom: 35%;
+            p {
+                button {
+                    width: 200px;
+                    height: 30px;
+                }
+            }
+        }
+    }
+    .login-text {  
+        height: 85vh;
+        
+        h1 {
+            font-size: 17px;
+        }
+        .img-area {
+            text-align: center;
+            padding-bottom: 50px;
+    
+            img {
+                width: 80%;
+            }
+        }
+        p {
+            font-size: 13px;
+        }
+    }
+    
+}

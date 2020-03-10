@@ -1,3 +1,23 @@
+/*
+ログイン画面のアニメーション
+*/
+.title-enter {
+    opacity: 0;
+}
+.title-enter-active {
+    transition: opacity 1200ms ease-out;
+    opacity: 1;
+}
+.cover-exit {
+    opacity: 1;
+    transform: translateX(0);
+}
+.cover-exit-active {
+    transition: opacity 2000ms ease-out, transform 2000ms ease-out;
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
 .fade-enter {
     opacity: 0;
     transform: translateY(10px);

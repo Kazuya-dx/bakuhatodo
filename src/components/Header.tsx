@@ -23,6 +23,7 @@ const Header: React.FC = () => {
             setCheck2(true);
         }, 800);
     }, [check2])
+
     return (
         <header>
             <CSSTransition

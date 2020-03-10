@@ -9,7 +9,8 @@ import { useDispatch } from 'react-redux'
 import { doneTask, deleteTask } from '../modules/tasksModule'
 import { CSSTransition } from 'react-transition-group'
 
-type Props = {
+// インターフェース
+interface Props {
     task: Task
 }
 
@@ -31,12 +32,10 @@ function useCountDown(initialValue: number, task: Task): number {
     // チェック時の処理
     if (task.done && !checkRef.current) {
         checkRef.current = !checkRef.current;
-        console.log(checkRef.current);
     }
     // チェック外した時の処理
     else if (!task.done && checkRef.current) {
         checkRef.current = !checkRef.current;
-        console.log(checkRef.current);
         setTimeout(() => {
             setCount(count => count - 1);
         }, 1000);

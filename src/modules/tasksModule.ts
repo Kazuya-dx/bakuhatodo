@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Task } from '../Types';
 
-type State = {
+interface State {
     count: number
     tasks: Task[]
 }
@@ -11,7 +11,7 @@ const initialState: State = {
     tasks: []
 }
 
-// createCliceで State, Reducer, Action を一気に作ることができる。
+// createCliceで State, Reducer, ActionCreator を一気に作ることができる。
 const tasksModule = createSlice({
     // name: このcreateSliceを識別するための名前
     name: 'tasks',
@@ -34,7 +34,6 @@ const tasksModule = createSlice({
             const task = state.tasks.find(t => t.id === action.payload.id)
             if (task) {
                 task.done = !task.done;
-                console.log(task.done);
             }
         },
         deleteTask(state: State, action: PayloadAction<Task>) {
@@ -47,7 +46,7 @@ const tasksModule = createSlice({
 
 /*
 他のコンポーネントで使いやすいように tasksModule.actions で export する。
-アクションを使用する時は addTask(), doneTask(), deleteTask() で使用可能。
+ActionCreatorを使用する時は addTask(), doneTask(), deleteTask() で使用可能。
 */
 export const {
     addTask, doneTask, deleteTask,

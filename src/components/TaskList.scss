@@ -4,24 +4,10 @@
     color: #bbb;
     font-size: 20px;
 }
+
 ul {
     width: 100%;
     padding: 0;
-    
-    li {
-        display: block;
-        margin-bottom: 15px;
-        padding: 10px;
-        height: 150px;
-        background-color: #2563a1;
-        color: white;
-        list-style-type: none;
-        border-radius: 0.45em;
-
-        button {
-            color: white;
-        }
-    }
 }
 
 .wrap {
@@ -49,21 +35,6 @@ ul {
     ul {
         width: 100%;
         padding: 0;
-        
-        li {
-            display: block;
-            margin-bottom: 15px;
-            padding: 10px;
-            height: 110px;
-            background-color: #2563a1;
-            color: white;
-            list-style-type: none;
-            border-radius: 0.45em;
-
-            button {
-                color: white;
-            }
-        }
     }
 
     .wrap {
